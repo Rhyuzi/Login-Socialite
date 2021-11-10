@@ -30,7 +30,7 @@ Route::prefix('/auth')->group(function(){
 
 Route::post('/smsgateway', [App\Http\Controllers\SmsGatewayVonage::class, 'smsGateway'])->name('smsGateway');
 Route::get('/kirimemail', [App\Http\Controllers\MailController::class, 'index'])->name('kirim-email');
-Route::get('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request');
+Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request');
 Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast');
 
 Route::prefix('/iklan')->group(function(){

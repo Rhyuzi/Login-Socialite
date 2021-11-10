@@ -12,7 +12,7 @@ class SmsGatewayVonage extends Controller
         $client = new \Vonage\Client($basic);
         $pesan = $request->pesan;
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("6281563534065", "Azi Rahayu", $pesan)
+            new \Vonage\SMS\Message\SMS("6289614110279", "Azi Rahayu", $pesan)
         );
         
         $message = $response->current();

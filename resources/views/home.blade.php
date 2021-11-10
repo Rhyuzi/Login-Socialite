@@ -35,10 +35,10 @@
                 <div class="card-header">{{ __('Kirim Email') }}</div>
 
                 <div class="card-body">
-                <form action="/kirimemail" method="post">
+                <form action="{{ route('kirim-email-request') }}" method="post">
                 @csrf
                 <input type="text" name="email" placeholder="Masukan Email Anda">
-                <a class="btn btn-success" href="{{ route('kirim-email-request') }}" >Kirim Email</a>
+                <button type="submit" class="btn btn-primary">Kirim Email</button>
                 </form>
                 </div>
 

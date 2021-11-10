@@ -11,14 +11,15 @@ class MailController extends Controller
 {
     public function index(){
  
-		Mail::to("azirahayu10rpla@gmail.com")->send(new MyTestMail());
+		Mail::to("tesazi@mailnesia.com")->send(new MyTestMail());
  
 		return "Email telah dikirim";
  
 	}
     public function sendReq(Request $request){
+		$email = $request->email;
  
-		Mail::to($request->email)->send(new MyTestMail());
+		Mail::to($email)->send(new MyTestMail());
  
 		return "Email telah dikirim";
  
