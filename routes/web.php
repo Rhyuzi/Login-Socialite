@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::prefix('/auth')->group(function(){
     Route::get('/redirect', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('redirectToProvider');
@@ -28,16 +28,16 @@ Route::prefix('/auth')->group(function(){
     Route::get('/facebook/callback', 'App\Http\Controllers\Auth\LoginController@handleFacebook')->name('handleFacebook');
 });
 
-Route::post('/smsgateway', [App\Http\Controllers\SmsGatewayVonage::class, 'smsGateway'])->name('smsGateway');
-Route::get('/kirimemail', [App\Http\Controllers\MailController::class, 'index'])->name('kirim-email');
-Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request');
-Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast');
+Route::post('/smsgateway', [App\Http\Controllers\SmsGatewayVonage::class, 'smsGateway'])->name('smsGateway')->middleware('auth');
+Route::get('/kirimemail', [App\Http\Controllers\MailController::class, 'index'])->name('kirim-email')->middleware('auth');
+Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request')->middleware('auth');
+Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast')->middleware('auth');
 
 Route::prefix('/iklan')->group(function(){
-    Route::get('/', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan');
-    Route::post('/post', [App\Http\Controllers\IklanController::class, 'tambahIklan'])->name('tambah-iklan');
-    Route::get('/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan');
-    Route::get('/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan');
+    Route::get('/', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan')->middleware('auth');
+    Route::post('/post', [App\Http\Controllers\IklanController::class, 'tambahIklan'])->name('tambah-iklan')->middleware('auth');
+    Route::get('/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan')->middleware('auth');
+    Route::get('/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan')->middleware('auth');
 });
 
 
