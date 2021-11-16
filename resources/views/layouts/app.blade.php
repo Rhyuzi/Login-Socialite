@@ -4,11 +4,65 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <style>
+
+@media(max-width : 767px){
+    .contentBox{
+        width: 300px;
+        height: auto;
+        flex-direction: column;
+    }
+    .contentBox .ads{
+        height: 200px;
+        transform: translateY(-50px);
+    }
+    .close{
+        top: -50px;
+        right: -10px;
+        background: #f3f3f3 url("../../img/x-lg.svg");
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: center;
+    }
+}
+.popup{
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: none;
+}
+.contentBox{
+position: relative;
+width: 650px;
+height: 450px;
+background: #fff;
+border-radius: 20px;
+display: flex;
+box-shadow: 0 5px 15px rgba(0,0,0.1);
+}
+
+.contentBox .ads {
+margin-left: 45px;
+
+}
+.close{
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+background: #f3f3f3 url("../../img/x-lg.svg");
+background-repeat: no-repeat;
+background-size: 30px;
+background-position: center;
+cursor: pointer;
+border-radius: 50%;
+z-index: 10;
+}
         body {
   background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
-}
-
+        }
 .btn-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
@@ -66,7 +120,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('ads') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
@@ -102,6 +156,23 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+   
     </div>
+   @yield('ads')
+  <script>
+    const popup = document.querySelector('.popup');
+    const close = document.querySelector('.close');
+
+    window.onload = function(){
+       setTimeout(() => {
+           popup.style.display = "block";
+       }, 1000);
+    }
+    close.addEventListener('click', () => {
+       popup.style.display = "none";
+   })
+   
+</script>
 </body>
 </html>

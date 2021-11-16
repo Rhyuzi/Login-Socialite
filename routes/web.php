@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::get('/', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
+
+Route::get('/back-end', function () {
+    return view('back-end.dashboard');
 });
 
 Auth::routes();
@@ -32,6 +34,7 @@ Route::post('/smsgateway', [App\Http\Controllers\SmsGatewayVonage::class, 'smsGa
 Route::get('/kirimemail', [App\Http\Controllers\MailController::class, 'index'])->name('kirim-email')->middleware('auth');
 Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request')->middleware('auth');
 Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast')->middleware('auth');
+Route::get('/ads', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
 
 Route::prefix('/iklan')->group(function(){
     Route::get('/', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan')->middleware('auth');

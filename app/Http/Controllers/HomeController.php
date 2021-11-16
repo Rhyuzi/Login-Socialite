@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Iklan;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $iklan = Iklan::all();
-        return view('home',compact('iklan'));
+        $countAds = Iklan::count();
+        $countUser = User::count();
+        return view('home',compact('iklan','countUser','countAds'));
     }
 }

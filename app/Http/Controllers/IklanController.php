@@ -27,5 +27,10 @@ class IklanController extends Controller
         return redirect('iklan/list');
         
     }
+    public function showAds()
+    {
+        $ads = Iklan::all();
+        return view('auth.login',compact('ads'));
+    }
 
 }

@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -83,4 +84,19 @@
         </div>
     </div>
 </div>
+
 @endsection
+@section('ads')
+<div class="popup">
+        <div class="contentBox">
+            <div class="close"></div>
+            <div class="ads">
+            @foreach($ads as $i)
+             {!! $i->link_iklan !!}
+            @endforeach
+            </div>
+        </div>
+    </div>
+
+@endsection
+

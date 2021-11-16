@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite; 
 use App\Models\User;
+use App\Models\Iklan;
 
 class LoginController extends Controller
 {
@@ -98,5 +99,9 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function showAds(){
+        $iklan = Iklan::all();
+        return view('auth.login',compact('iklan'));
     }
 }
