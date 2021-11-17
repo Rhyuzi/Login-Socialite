@@ -10,8 +10,8 @@
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('icon/material-icon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
     <!-- CSS Files -->
     <link href="{{asset('/be/css/material-dashboard.css?v=2.1.2')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="nav-item {{ Route::currentRouteName() == 'show-gambar' ? 'active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('users') }}">
                 <i class="material-icons">collections</i>
                 <p> User Management  </p>
               </a>
@@ -53,78 +53,6 @@
                 <p> Auto Post Sosmed </p>
               </a>
             </li>
-            {{-- <li class="nav-item ">
-              <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
-                <i class="material-icons">apps</i>
-                <p> Components
-                  <b class="caret"></b>
-                </p>
-              </a>
-              <div class="collapse" id="componentsExamples">
-                <ul class="nav">
-                  <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
-                      <span class="sidebar-mini"> MLT </span>
-                      <span class="sidebar-normal"> Multi Level Collapse
-                        <b class="caret"></b>
-                      </span>
-                    </a>
-                    <div class="collapse" id="componentsCollapse">
-                      <ul class="nav">
-                        <li class="nav-item ">
-                          <a class="nav-link" href="#0">
-                            <span class="sidebar-mini"> E </span>
-                            <span class="sidebar-normal"> Example </span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/buttons.html">
-                      <span class="sidebar-mini"> B </span>
-                      <span class="sidebar-normal"> Buttons </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/grid.html">
-                      <span class="sidebar-mini"> GS </span>
-                      <span class="sidebar-normal"> Grid System </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/panels.html">
-                      <span class="sidebar-mini"> P </span>
-                      <span class="sidebar-normal"> Panels </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/sweet-alert.html">
-                      <span class="sidebar-mini"> SA </span>
-                      <span class="sidebar-normal"> Sweet Alert </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/notifications.html">
-                      <span class="sidebar-mini"> N </span>
-                      <span class="sidebar-normal"> Notifications </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/icons.html">
-                      <span class="sidebar-mini"> I </span>
-                      <span class="sidebar-normal"> Icons </span>
-                    </a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="../../examples/components/typography.html">
-                      <span class="sidebar-mini"> T </span>
-                      <span class="sidebar-normal"> Typography </span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li> --}}
           </ul>
         </div>
       </div>
@@ -148,15 +76,6 @@
               <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end">
-              {{-- <form class="navbar-form">
-                <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search...">
-                  <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
-                  </button>
-                </div>
-              </form> --}}
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
@@ -166,22 +85,6 @@
                     </p>
                   </a>
                 </li>
-                {{-- <li class="nav-item dropdown">
-                  <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">notifications</i>
-                    <span class="notification">5</span>
-                    <p class="d-lg-none d-md-block">
-                      Some Actions
-                    </p>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                    <a class="dropdown-item" href="#">Another Notification</a>
-                    <a class="dropdown-item" href="#">Another One</a>
-                  </div>
-                </li> --}}
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">person</i>
@@ -239,108 +142,6 @@
         @include('confirmation-popup')
       </div>
     </div>
-    {{-- <div class="fixed-plugin">
-      <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-          <i class="fa fa-cog fa-2x"> </i>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="header-title"> Sidebar Filters</li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger active-color">
-              <div class="badge-colors ml-auto mr-auto">
-                <span class="badge filter badge-cobalt" data-color="cobalt"></span>
-                <span class="badge filter badge-moccaccino active" data-color="moccaccino"></span>
-                <span class="badge filter badge-green" data-color="green"></span>
-                <span class="badge filter badge-warning" data-color="brown"></span>
-                <span class="badge filter badge-danger" data-color="danger"></span>
-                <span class="badge filter badge-chenin" data-color="chenin"></span>
-              </div>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="header-title">Sidebar Background</li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger background-color">
-              <div class="ml-auto mr-auto">
-                <span class="badge filter badge-black" data-background-color="black"></span>
-                <span class="badge filter badge-white active" data-background-color="white"></span>
-                <span class="badge filter badge-chenin" data-background-color="chenin"></span>
-              </div>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger">
-              <p>Sidebar Mini</p>
-              <label class="ml-auto">
-                <div class="togglebutton switch-sidebar-mini">
-                  <label>
-                    <input type="checkbox">
-                    <span class="toggle"></span>
-                  </label>
-                </div>
-              </label>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger">
-              <p>Sidebar Images</p>
-              <label class="switch-mini ml-auto">
-                <div class="togglebutton switch-sidebar-image">
-                  <label>
-                    <input type="checkbox" checked="">
-                    <span class="toggle"></span>
-                  </label>
-                </div>
-              </label>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="header-title">Images</li>
-          <li class="active">
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../be/img/sidebar-1.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../be/img/sidebar-2.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../be/img/sidebar-3.jpg" alt="">
-            </a>
-          </li>
-          <li>
-            <a class="img-holder switch-trigger" href="javascript:void(0)">
-              <img src="../../be/img/sidebar-4.jpg" alt="">
-            </a>
-          </li>
-          <li class="button-container">
-            <a href=" product/material-dashboard-pro" target="_blank" class="btn btn-chenin btn-block btn-fill">Buy Now</a>
-            <a href="https://demos.creative-tim.com/material-dashboard-pro/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-              Documentation
-            </a>
-            <a href=" product/material-dashboard" target="_blank" class="btn btn-info btn-block">
-              Get Free Demo!
-            </a>
-          </li>
-          <li class="button-container github-star">
-            <a class="github-button" href="https://github.com/creativetimofficial/ct-material-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-          </li>
-          <li class="header-title">Thank you for 95 shares!</li>
-          <li class="button-container text-center">
-            <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-            <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-            <br>
-            <br>
-          </li>
-        </ul>
-      </div>
-    </div> --}}
     <!--   Core JS Files   -->
     <script src="{{asset('/be/js/core/jquery.min.js')}}"></script>
     <script src="{{asset('/be/js/core/popper.min.js')}}"></script>
@@ -371,7 +172,7 @@
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{asset('/be/js/plugins/nouislider.min.js')}}"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="{{ asset('/js/core.js') }}"></script>
     <!-- Library for adding dinamically elements -->
     <script src="{{asset('/be/js/plugins/arrive.min.js')}}"></script>
     <!--  Google Maps Plugin    -->

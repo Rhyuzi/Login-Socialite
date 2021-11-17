@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('back-end.sidebar')
+@section('content')
 <style>
 table {
   width:100%;
@@ -23,14 +23,11 @@ th, td {
   color: white;
 }
 </style>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>Data Iklan</h1>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+    <h1>Data Iklan</h1>
 <h2><a href="{{ route('iklan') }}">Tambah Data</a></h2><h2><a href="/home">Kembali Ke home</a></h2>
 </form>
     <table id="t01">
@@ -38,7 +35,6 @@ th, td {
         <th>Link Iklan</th>
   </tr>
   @foreach($listIklan as $i)
-  
   <tr>
         <td>{!! $i->link_iklan !!}</td>
         <td>
@@ -47,9 +43,7 @@ th, td {
   </tr>
   @endforeach
   </table>
-
-  
-  
-
-</body>
-</html>
+    </div>
+  </div>
+</div>
+@endsection

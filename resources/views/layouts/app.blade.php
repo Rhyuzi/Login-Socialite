@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 <style>
 
 @media(max-width : 767px){
     .contentBox{
-        width: 300px;
+        width: 100px;
         height: auto;
         flex-direction: column;
     }
     .contentBox .ads{
-        height: 200px;
+        height: 100px;
         transform: translateY(-50px);
     }
     .close{
@@ -24,12 +23,26 @@
         background-position: center;
     }
 }
+.popupBack{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0, .3) center center fixed;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100hw;
+    z-index: -1;
+}
 .popup{
-position: fixed;
+position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-display: none;
+visibility: hidden;
+background-color: rgba(0,0,0, .3);
 }
 .contentBox{
 position: relative;
@@ -42,6 +55,7 @@ box-shadow: 0 5px 15px rgba(0,0,0.1);
 }
 
 .contentBox .ads {
+margin-top: 50px;
 margin-left: 45px;
 
 }
@@ -59,10 +73,20 @@ cursor: pointer;
 border-radius: 50%;
 z-index: 10;
 }
-        body {
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300vm;
+    height: 300vh;
+    background-color: rgba(0,0,0,0.3);
+}
+
+body {
   background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
-        }
+}
+
 .btn-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
@@ -78,6 +102,17 @@ z-index: 10;
   color: white !important;
   background-color: #3b5998;
 }
+.blurpointer{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+.nonblur{
+    filter: blur(0);
+    pointer-events: inherit;
+    user-select: none;
+}
+
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,14 +120,13 @@ z-index: 10;
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Rhyuzi') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('/fonts/nunito') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -166,13 +200,19 @@ z-index: 10;
 
     window.onload = function(){
        setTimeout(() => {
-           popup.style.display = "block";
+           popup.style.visibility = "visible";
+           document.getElementById('blur').classList.toggle("blurpointer");
        }, 1000);
+       
     }
     close.addEventListener('click', () => {
        popup.style.display = "none";
+       document.getElementById('blur').classList.toggle("nonblur");
    })
    
+   function tes(){
+    
+   }
 </script>
 </body>
 </html>

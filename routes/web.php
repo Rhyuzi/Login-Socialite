@@ -18,6 +18,9 @@ Route::get('/', [App\Http\Controllers\IklanController::class, 'showAds'])->name(
 Route::get('/back-end', function () {
     return view('back-end.dashboard');
 });
+Route::get('/login/back', function () {
+    return view('back-end.login-back');
+});
 
 Auth::routes();
 
@@ -42,5 +45,11 @@ Route::prefix('/iklan')->group(function(){
     Route::get('/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan')->middleware('auth');
     Route::get('/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan')->middleware('auth');
 });
+
+Route::prefix('/users')->group(function(){
+    Route::get('/', [App\Http\Controllers\UserManagement::class, 'index'])->name('users')->middleware('auth');
+});
+
+
 
 
