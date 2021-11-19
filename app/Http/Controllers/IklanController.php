@@ -17,8 +17,9 @@ class IklanController extends Controller
         return redirect('/iklan/list');
     }
     public function listIklan(){
-        $listIklan = Iklan::all();
-        return view('iklan',compact('listIklan'));
+        $listIklan = Iklan::where('tampilkan', 1)->simplePaginate(3);
+        $tidakDitampilkan = Iklan::where('tampilkan', 0)->simplePaginate(3);
+        return view('back-end.iklan',compact('listIklan','tidakDitampilkan'));
     }
     public function hapus($id){
         $hapus = Iklan::find($id);
@@ -29,7 +30,7 @@ class IklanController extends Controller
     }
     public function showAds()
     {
-        $ads = Iklan::all();
+        $ads = Iklan::where('tampilkan', 1)->get();
         return view('auth.login',compact('ads'));
     }
 

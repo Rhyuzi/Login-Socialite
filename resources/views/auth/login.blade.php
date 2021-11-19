@@ -39,18 +39,20 @@
                 </label>
               </div>
               <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                  in</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Masuk</button>
+              </div></br>
+              <div class="d-grid">
+                <a href="{{ route('register') }}" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Buat Akun</a>
               </div>
               <hr class="my-4">
               <div class="d-grid mb-2">
                 <a href="{{ route('redirectToProvider') }}" class="btn btn-danger btn-login text-uppercase fw-bold" type="submit">
-                <img src="../../img/google.svg" alt="" srcset=""> Sign in with Google
+                <img src="../../img/google.svg" alt="" srcset=""> Masuk lewat Google
                 </a>
               </div>
               <div class="d-grid">
                 <a href="{{ route('redirectFacebook') }}" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">
-                <img src="../../img/facebook.svg" alt="" srcset=""> Sign in with Facebook
+                <img src="../../img/facebook.svg" alt="" srcset=""> Masuk lewat Facebook
                 </a>
               </div>
             </form>

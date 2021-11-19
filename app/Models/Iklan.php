@@ -10,6 +10,6 @@ class Iklan extends Model
     use HasFactory;
     protected $table = 'iklan';
     protected $fillable = [
-        'link_iklan',
+        'link_iklan','tampilkan',
     ];
 }

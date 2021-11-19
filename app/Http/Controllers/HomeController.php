@@ -28,6 +28,8 @@ class HomeController extends Controller
         $iklan = Iklan::all();
         $countAds = Iklan::count();
         $countUser = User::count();
-        return view('home',compact('iklan','countUser','countAds'));
+        $date = date('Y-m-d');
+        $userBaru = User::where('created_at','like',"%".$date."%")->where('role', 'user')->get();
+        return view('home',compact('iklan','countUser','countAds','userBaru'));
     }
 }

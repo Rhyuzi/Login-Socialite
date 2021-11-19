@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
 
 Route::get('/back-end', function () {
-    return view('back-end.dashboard');
-});
-Route::get('/login/back', function () {
-    return view('back-end.login-back');
+    return view('back-end.iklan');
 });
 
 Auth::routes();
@@ -48,6 +45,10 @@ Route::prefix('/iklan')->group(function(){
 
 Route::prefix('/users')->group(function(){
     Route::get('/', [App\Http\Controllers\UserManagement::class, 'index'])->name('users')->middleware('auth');
+});
+Route::prefix('/back-office')->group(function(){
+    Route::get('/loginForm', [App\Http\Controllers\BackOffice::class, 'login'])->name('login-back-office');
+    Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
 });
 
 

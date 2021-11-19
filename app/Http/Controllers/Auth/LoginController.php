@@ -42,6 +42,7 @@ class LoginController extends Controller
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
                     'password'          => 0,
+                    'role'              => 'user',
                     'email_verified_at' => now()
                 ]);
         
@@ -69,6 +70,7 @@ class LoginController extends Controller
                     'email'             => $user_facebook->getEmail(),
                     'name'              => $user_facebook->getName(),
                     'password'          => 0,
+                    'role'              => 'user',
                     'email_verified_at' => now()
                 ]);
         
@@ -99,9 +101,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-    public function showAds(){
-        $iklan = Iklan::all();
-        return view('auth.login',compact('iklan'));
     }
 }
