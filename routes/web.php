@@ -37,18 +37,22 @@ Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBla
 Route::get('/ads', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
 
 Route::prefix('/iklan')->group(function(){
-    Route::get('/', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan')->middleware('auth');
-    Route::post('/post', [App\Http\Controllers\IklanController::class, 'tambahIklan'])->name('tambah-iklan')->middleware('auth');
-    Route::get('/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan')->middleware('auth');
-    Route::get('/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan')->middleware('auth');
 });
 
 Route::prefix('/users')->group(function(){
     Route::get('/', [App\Http\Controllers\UserManagement::class, 'index'])->name('users')->middleware('auth');
 });
+Route::get('/back-office/loginForm', [App\Http\Controllers\BackOffice::class, 'login'])->name('login-back-office');
 Route::prefix('/back-office')->group(function(){
-    Route::get('/loginForm', [App\Http\Controllers\BackOffice::class, 'login'])->name('login-back-office');
     Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
+    Route::get('/dashboard', [App\Http\Controllers\BackOffice::class, 'index'])->name('dashboard');
+    Route::get('/marketing-campaign', [App\Http\Controllers\BackOffice::class, 'email'])->name('marketing-campaign');
+    Route::post('/iklan/edit/{id}', [App\Http\Controllers\IklanController::class, 'iklanUpdate'])->name('edit-iklan');
+    Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request');
+    Route::get('/iklan//', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan');
+    Route::post('/iklan/post', [App\Http\Controllers\IklanController::class, 'tambahIklan'])->name('tambah-iklan');
+    Route::get('/iklan/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan');
+    Route::get('/iklan/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan');
 });
 
 

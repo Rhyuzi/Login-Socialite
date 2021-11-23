@@ -30,7 +30,7 @@
         <div class="sidebar-wrapper">
           <ul class="nav">
             <li class="nav-item {{ Route::currentRouteName() == 'dashboard-admin' ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('home') }}">
+              <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="material-icons">dashboard</i>
                 <p> Dashboard </p>
               </a>
@@ -39,6 +39,12 @@
               <a class="nav-link" href="{{ route('list-iklan') }}">
                 <i class="material-icons">article</i>
                 <p>Ads Management </p>
+              </a>
+            </li>
+            <li class="nav-item {{ Route::currentRouteName() == 'allArticle' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('marketing-campaign') }}">
+                <i class="material-icons">article</i>
+                <p>Marketing Campaign</p>
               </a>
             </li>
             <li class="nav-item {{ Route::currentRouteName() == 'show-gambar' ? 'active' : '' }}">

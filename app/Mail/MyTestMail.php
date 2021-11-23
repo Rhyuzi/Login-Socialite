@@ -28,7 +28,7 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->from('pengirim@malasngoding.com')
+        return $this->from('Jumpa@ceking.com')
                    ->view('myTestMail')
                    ->with(
                     [

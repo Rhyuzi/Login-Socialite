@@ -8,8 +8,9 @@ class UserManagement extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('back-auth');
     }
+   
     public function index(){
         return view('back-end.user-mgmt');
     }
