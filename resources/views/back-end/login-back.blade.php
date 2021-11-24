@@ -34,7 +34,6 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
-
               @if ($message = Session::get('gagal'))
 			   	<div div class="alert alert-danger alert-block">
 					<button type="button" class="close" data-dismiss="alert">×</button> 

@@ -12,10 +12,6 @@ use App\Models\Iklan;
 class BackOffice extends Controller
 {
     
-    public function __construct()
-    {
-        $this->middleware('back-auth');
-    }
     public function login(){
         return view('back-end.login-back');
     }
@@ -47,4 +43,3 @@ class BackOffice extends Controller
         return view('back-end.marketing-campaign');
     }
 }
-

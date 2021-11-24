@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class IklanController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('back-auth');
-    }
     public function index(){
         return view('tambah_iklan');
     }

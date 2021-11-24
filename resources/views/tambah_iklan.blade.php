@@ -10,6 +10,7 @@
     <form action="{{ route('tambah-iklan') }}" method="post">
         @csrf
         <textarea name="iklan" id="" cols="30" rows="10">Masukan Link Iklan / Masukan dengan tag HTML</textarea>
+        <input type="file" name="video">
         <button type="submit">Submit</button>
     </form>
     

@@ -54,7 +54,3 @@ Route::prefix('/back-office')->group(function(){
     Route::get('/iklan/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan');
     Route::get('/iklan/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan');
 });
-
-
-
-

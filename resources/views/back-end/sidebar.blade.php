@@ -41,12 +41,6 @@
                 <p>Ads Management </p>
               </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'allArticle' ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('marketing-campaign') }}">
-                <i class="material-icons">article</i>
-                <p>Marketing Campaign</p>
-              </a>
-            </li>
             <li class="nav-item {{ Route::currentRouteName() == 'show-gambar' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('users') }}">
                 <i class="material-icons">collections</i>
