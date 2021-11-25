@@ -21,6 +21,6 @@ class Admin
             return $next($request);
         }
    
-        return redirect()->route('login-back-office')->with(‘error’,"You don't have admin access.");
+        return redirect()->route('login-back-office');
     }
 }

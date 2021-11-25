@@ -43,7 +43,9 @@ Route::prefix('/users')->group(function(){
     Route::get('/', [App\Http\Controllers\UserManagement::class, 'index'])->name('users')->middleware('auth');
 });
 Route::get('/back-office/loginForm', [App\Http\Controllers\BackOffice::class, 'login'])->name('login-back-office');
-Route::prefix('/back-office')->group(function(){
+Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
+
+Route::prefix('/back-office')->middleware('admin')->group(function(){
     Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
     Route::get('/dashboard', [App\Http\Controllers\BackOffice::class, 'index'])->name('dashboard');
     Route::get('/marketing-campaign', [App\Http\Controllers\BackOffice::class, 'email'])->name('marketing-campaign');
