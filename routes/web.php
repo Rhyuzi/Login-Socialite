@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showAds'])->name('ads');
 
 Route::get('/back-end', function () {
     return view('back-end.iklan');
@@ -49,8 +49,13 @@ Route::prefix('/back-office')->group(function(){
     Route::get('/marketing-campaign', [App\Http\Controllers\BackOffice::class, 'email'])->name('marketing-campaign');
     Route::post('/iklan/edit/{id}', [App\Http\Controllers\IklanController::class, 'iklanUpdate'])->name('edit-iklan');
     Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request');
-    Route::get('/iklan//', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan');
+    Route::get('/iklan', [App\Http\Controllers\IklanController::class, 'index'])->name('iklan');
     Route::post('/iklan/post', [App\Http\Controllers\IklanController::class, 'tambahIklan'])->name('tambah-iklan');
     Route::get('/iklan/list', [App\Http\Controllers\IklanController::class, 'listIklan'])->name('list-iklan');
     Route::get('/iklan/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapus'])->name('hapus-iklan');
+    Route::post('/logout', [App\Http\Controllers\BackOffice::class, 'logoutBack'])->name('logout-back');
+    Route::post('/iklan/gambar/post', [App\Http\Controllers\IklanController::class, 'tambahBannerIklan'])->name('post-banner-iklan');
+    Route::post('/iklan/banner/edit/{id}', [App\Http\Controllers\IklanController::class, 'banneriklanUpdate'])->name('edit-banner-iklan');
+    Route::get('/iklan/banner/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapusBannerIklan'])->name('hapus-banner-iklan');
+    Route::get('/user-management', [App\Http\Controllers\BackOffice::class, 'userManagement'])->name('user-management');
 });

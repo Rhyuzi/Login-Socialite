@@ -72,6 +72,11 @@
             <div class="ads">
             @foreach($ads as $i)
              {!! $i->link_iklan !!}
+             <video width="570" height="350" autoplay muted>
+                        <source src="{{ asset('/iklan/video/'.$i->nama_video)}}" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                         Your browser does not support the video tag.
+                    </video>
             @endforeach
             </div>
         </div>

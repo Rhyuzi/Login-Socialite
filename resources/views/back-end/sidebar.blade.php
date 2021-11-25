@@ -41,8 +41,14 @@
                 <p>Ads Management </p>
               </a>
             </li>
+            <li class="nav-item {{ Route::currentRouteName() == 'allArticle' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('marketing-campaign') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Marketing Campaign</p>
+              </a>
+            </li>
             <li class="nav-item {{ Route::currentRouteName() == 'show-gambar' ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('users') }}">
+              <a class="nav-link" href="{{ route('user-management') }}">
                 <i class="material-icons">collections</i>
                 <p> User Management  </p>
               </a>
@@ -97,13 +103,13 @@
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    <a class="dropdown-item" href="{{ route('logout-back') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout-back') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                     
@@ -124,19 +130,11 @@
             <nav class="float-left">
               <ul>
                 <li>
-                  <a href="#">
-                   SS
-                  </a>
+                 
                 </li>
               </ul>
             </nav>
-            <div class="copyright float-right">
-              &copy;
-              <script>
-                document.write(new Date().getFullYear())
-              </script>, made with <i class="material-icons">favorite</i> by
-              <a href="#" target="_blank">SSR</a> for a better web.
-            </div>
+            
           </div>
         </footer>
         @include('confirmation-popup')

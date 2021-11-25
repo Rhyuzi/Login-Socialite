@@ -15,6 +15,7 @@
             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
               <thead>
                 <tr>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Email</th>
                   <th class="disabled-sorting text-right"></th>
@@ -22,16 +23,19 @@
               </thead>
               <tfoot>
                 <tr>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Email</th>
                   <th class="text-right"></th>
                 </tr>
               </tfoot>
               <tbody>
-                @for ($i = 0; $i < 55; $i++)
+              @php $no = 1; @endphp
+              @foreach($user as $u)
                   <tr>
-                    <td>Tiger Nixon</td>
-                    <td>1234567890987654</td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $u->name }}</td>
+                    <td>{{ $u->email }}</td>
                     <td class="text-right">
                       <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">mode_edit</i></a>
                       <button class="btn btn-link btn-danger btn-just-icon remove" data-toggle="modal" data-target="#deletePopup">
@@ -39,7 +43,7 @@
                       </button>
                     </td>
                   </tr>
-                @endfor
+                  @endforeach
               </tbody>
             </table>
         </div>

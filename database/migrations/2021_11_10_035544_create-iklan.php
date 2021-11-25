@@ -16,7 +16,8 @@ class CreateIklan extends Migration
        
         Schema::create('iklan', function (Blueprint $table) {
             $table->id();
-            $table->text('link_iklan');
+            $table->text('link_iklan')->nullable();
+            $table->string('nama_video')->nullable();
             $table->string('tampilkan');
             $table->timestamps();
         });

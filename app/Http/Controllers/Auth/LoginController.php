@@ -102,4 +102,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function showAds()
+    {
+        $ads = Iklan::where('tampilkan', 1)->get();
+        return view('auth.login',compact('ads'));
+    }
 }

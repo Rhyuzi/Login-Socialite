@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Iklan;
 
 class BackOffice extends Controller
-{
-    
+{ 
     public function login(){
         return view('back-end.login-back');
     }
@@ -41,5 +40,17 @@ class BackOffice extends Controller
     }
     public function email(){
         return view('back-end.marketing-campaign');
+    }
+    public function logoutBack(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
+ 
+        return redirect()->route('login-back-office');
+    }
+    public function userManagement(){
+        $user = User::where('role','user')->get();
+        return view('back-end.user-mgmt',compact('user'));
     }
 }
