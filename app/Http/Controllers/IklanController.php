@@ -15,14 +15,25 @@ class IklanController extends Controller
     }
     public function tambahIklan(Request $request){
         $video = $request->file('video');
-        $destinationPath = 'uploads';
-        $video->move("iklan/video/", $video->getClientOriginalName());
-        $tambahIklan = Iklan::create([
-            'link_iklan' => $request->iklan,
-            'nama_video' => $video->getClientOriginalName(),
-            'tampilkan'  => 0
-        ]);
+
+        if($video == null){
+            $tambahIklan = Iklan::create([
+                'link_iklan' => $request->iklan,
+                'nama_video' => null,
+                'tampilkan'  => 0
+            ]);
+            return redirect()->route('list-iklan');
+        }else{
+            $video->move("iklan/video/", $video->getClientOriginalName());
+            $tambahIklan = Iklan::create([
+                'link_iklan' => $request->iklan,
+                'nama_video' => $video->getClientOriginalName(),
+                'tampilkan'  => 0
+            ]);
+            return redirect()->route('list-iklan');
+        }
         return redirect()->route('list-iklan');
+      
     }
     public function listIklan(){
         $listIklan = Iklan::where('tampilkan', 1)->simplePaginate(3);
@@ -52,12 +63,22 @@ class IklanController extends Controller
     }
     public function tambahBannerIklan(Request $request){
         $banner = $request->file('gambar');
-        $banner->move("iklan/gambar/", $banner->getClientOriginalName());
-        $tambahIklan = BannerIklan::create([
-            'link_iklan' => $request->link_iklan,
-            'gambar' => $banner->getClientOriginalName(),
-            'tampilkan'  => 1
-        ]);
+        if($video == null){
+            $tambahIklan = Iklan::create([
+                'link_iklan' => $request->iklan,
+                'gambar' => null,
+                'tampilkan'  => 0
+            ]);
+            return redirect()->route('list-iklan');
+        }else{
+            $banner->move("iklan/gambar/", $banner->getClientOriginalName());
+            $tambahIklan = BannerIklan::create([
+                'link_iklan' => $request->link_iklan,
+                'gambar' => $banner->getClientOriginalName(),
+                'tampilkan'  => 1
+            ]);
+            return redirect()->route('list-iklan');
+        }
         return redirect()->route('list-iklan');
     }
 
