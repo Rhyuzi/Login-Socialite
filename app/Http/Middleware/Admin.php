@@ -21,6 +21,7 @@ class Admin
             return $next($request);
         }
    
-        return redirect()->route('login-back-office');
+        
+        return redirect()->route('home')->with('gagal', 'Anda tidak bisa mengakses menu tersebut!');
     }
 }

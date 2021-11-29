@@ -63,10 +63,10 @@ class IklanController extends Controller
     }
     public function tambahBannerIklan(Request $request){
         $banner = $request->file('gambar');
-        if($video == null){
+        if($banner == null){
             $tambahIklan = Iklan::create([
                 'link_iklan' => $request->iklan,
-                'gambar' => null,
+                'gambar_iklan' => null,
                 'tampilkan'  => 0
             ]);
             return redirect()->route('list-iklan');
@@ -74,7 +74,7 @@ class IklanController extends Controller
             $banner->move("iklan/gambar/", $banner->getClientOriginalName());
             $tambahIklan = BannerIklan::create([
                 'link_iklan' => $request->link_iklan,
-                'gambar' => $banner->getClientOriginalName(),
+                'gambar_iklan' => $banner->getClientOriginalName(),
                 'tampilkan'  => 1
             ]);
             return redirect()->route('list-iklan');

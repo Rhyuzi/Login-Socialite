@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class MailController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('back-auth');
-    }
+	
     public function index(){
  
 		Mail::to("tesazi@mailnesia.com")->send(new MyTestMail());
@@ -31,10 +28,11 @@ class MailController extends Controller
  
 	}
 	public function emailBlast(){
-		$getEmail = User::select('email')->get();
-		
+		$getEmail = User::select('email')->where('role','user')->get();
 		Mail::to($getEmail)->send(new MyTestMail());
+
+		Session::flash('berhasil','Email Berhasil Dikirim email user!');
  
-		return "Email telah dikirim";
+		return redirect()->route('marketing-campaign');
 	}
 }

@@ -49,7 +49,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="material-icons">local_offer</i> Tracked from Github
+              <i class="material-icons">local_offer</i> Video ads yg terdaftar
             </div>
           </div>
         </div>
@@ -60,8 +60,8 @@
             <div class="card-icon">
               <i class="fa fa-twitter"></i>
             </div>
-            <p class="card-category">Followers</p>
-            <h3 class="card-title">+245</h3>
+            <p class="card-category">Banner Iklan</p>
+            <h3 class="card-title">{{ $countBannerIklan }}</h3>
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -71,6 +71,14 @@
         </div>
       </div>
     </div>
+
+    {!! $chart->container() !!}
+ 
+ <script src="{{ $chart->cdn() }}"></script>
+
+ {{ $chart->script() }}
+
+ 
     <div class="row">
       <div class="col-md-4">
         <div class="card card-chart">

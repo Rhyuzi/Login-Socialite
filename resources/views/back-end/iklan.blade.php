@@ -107,7 +107,7 @@
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                   <img src="{{ asset('/iklan/gambar/'.$i->gambar)}}" width="400" height="200">
+                   <img src="{{ asset('/iklan/gambar/'.$i->gambar_iklan)}}" width="400" height="200">
 
                    </div>
                    
@@ -138,7 +138,7 @@
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                   <img src="{{ asset('/iklan/gambar/'.$i->gambar)}}" width="400" height="200">
+                   <img src="{{ asset('iklan/gambar/'.$i->gambar_iklan)}}" width="400" height="200">
 
                    </div>
                    

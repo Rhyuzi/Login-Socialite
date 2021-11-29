@@ -33,7 +33,6 @@ Route::prefix('/auth')->group(function(){
 Route::post('/smsgateway', [App\Http\Controllers\SmsGatewayVonage::class, 'smsGateway'])->name('smsGateway')->middleware('auth');
 Route::get('/kirimemail', [App\Http\Controllers\MailController::class, 'index'])->name('kirim-email')->middleware('auth');
 Route::post('/kirimemailreq', [App\Http\Controllers\MailController::class, 'sendReq'])->name('kirim-email-request')->middleware('auth');
-Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast')->middleware('auth');
 Route::get('/ads', [App\Http\Controllers\IklanController::class, 'showAds'])->name('ads');
 
 Route::prefix('/iklan')->group(function(){
@@ -45,8 +44,7 @@ Route::prefix('/users')->group(function(){
 Route::get('/back-office/loginForm', [App\Http\Controllers\BackOffice::class, 'login'])->name('login-back-office');
 Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
 
-Route::prefix('/back-office')->middleware('admin')->group(function(){
-    Route::post('/loginPost', [App\Http\Controllers\BackOffice::class, 'loginBack'])->name('login-post');
+Route::prefix('/back-office')->middleware('admin','auth')->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\BackOffice::class, 'index'])->name('dashboard');
     Route::get('/marketing-campaign', [App\Http\Controllers\BackOffice::class, 'email'])->name('marketing-campaign');
     Route::post('/iklan/edit/{id}', [App\Http\Controllers\IklanController::class, 'iklanUpdate'])->name('edit-iklan');
@@ -60,4 +58,5 @@ Route::prefix('/back-office')->middleware('admin')->group(function(){
     Route::post('/iklan/banner/edit/{id}', [App\Http\Controllers\IklanController::class, 'banneriklanUpdate'])->name('edit-banner-iklan');
     Route::get('/iklan/banner/hapus/{id}', [App\Http\Controllers\IklanController::class, 'hapusBannerIklan'])->name('hapus-banner-iklan');
     Route::get('/user-management', [App\Http\Controllers\BackOffice::class, 'userManagement'])->name('user-management');
+    Route::get('/emailblast', [App\Http\Controllers\MailController::class, 'emailBlast'])->name('email-blast');
 });

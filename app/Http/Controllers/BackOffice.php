@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Iklan;
-
+use App\Models\BannerIklan;
 class BackOffice extends Controller
 { 
     public function login(){
@@ -31,12 +32,29 @@ class BackOffice extends Controller
     }
     public function index()
     {
+
         $iklan = Iklan::all();
         $countAds = Iklan::count();
-        $countUser = User::count();
+        $countUser = User::where('role','user')->count();
+        $countBannerIklan = BannerIklan::count();
         $date = date('Y-m-d');
+        $bulan = date('M');
         $userBaru = User::where('created_at','like',"%".$date."%")->where('role', 'user')->get();
-        return view('back-end.dashboard',compact('iklan','countUser','countAds','userBaru'));
+
+        $chart = (new LarapexChart)->setType('area')
+        ->setTitle('Total Akumulatif Data')
+        ->setSubtitle('Data Bulan '.$bulan)
+        ->setXAxis([
+            'Jumlah Ads', 'Jumlah USer','Jumlah Banner iklan'
+        ])
+        ->setDataset([
+            [
+                'name'  =>  'Active Users',
+                'data'  =>  [$countAds, $countUser,$countBannerIklan]
+            ]
+        ]);
+
+        return view('back-end.dashboard',compact('iklan','countUser','countAds','userBaru','chart','countBannerIklan'));
     }
     public function email(){
         return view('back-end.marketing-campaign');
