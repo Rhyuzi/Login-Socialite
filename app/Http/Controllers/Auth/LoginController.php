@@ -52,7 +52,7 @@ class LoginController extends Controller
             }
 
         } catch (\Exception $e) {
-            return redirect()->route('login');
+            return redirect('/');
         }
     }
     public function handleFacebook(\Request $request)
@@ -104,6 +104,7 @@ class LoginController extends Controller
     }
     public function showAds()
     {
+
         $ads = Iklan::where('tampilkan', 1)->get();
         return view('auth.login',compact('ads'));
     }
