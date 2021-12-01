@@ -35,13 +35,15 @@ class MailController extends Controller
 	}
 	public function emailBlast(){
 		$getEmail = User::select('email')->where('role','user')->get();
+		$getUser = User::where('role','user')->get();
 		$getEmail2 = User::all();
 		$sendEmail = Mail::to($getEmail)->send(new MyTestMail());
 
-		foreach($getEmail as $g){
+		foreach($getUser as $g){
 			$sendEmailToDb = Email::create([
 				'pengirim' => Auth::user()->name ,
-				'email_tujuan' => $g->email
+				'email_tujuan' => $g->email,
+				'nama_penerima' => $g->name
 			 ]);
 		}
 		Session::flash('berhasil','Email Berhasil Dikirim email user!');

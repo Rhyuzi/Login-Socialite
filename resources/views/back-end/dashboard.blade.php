@@ -404,6 +404,37 @@
         </div>
       </div>
     </div>
+
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Pesan terkirim Hari ini!</h4>
+            <p class="card-category"></p>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-warning">
+                <tr><th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+              </tr></thead>
+              <tbody>
+              @php $no = 1; @endphp
+              @foreach($emailSend as $u)
+                <tr>
+                  <td>{{ $no++ }}</td>
+                  <td>{{ $u->nama_penerima }}</td>
+                  <td>{{ $u->email_tujuan }}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            {{ $emailSend->links() }}
+          </div>
+        </div>
+      </div>
+
+
   </div>
 </div>
 @endsection

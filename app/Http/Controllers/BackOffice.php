@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Iklan;
 use App\Models\BannerIklan;
+use App\Models\Email;
 class BackOffice extends Controller
 { 
     public function login(){
@@ -40,6 +41,7 @@ class BackOffice extends Controller
         $date = date('Y-m-d');
         $bulan = date('M');
         $userBaru = User::where('created_at','like',"%".$date."%")->where('role', 'user')->get();
+        $emailSend = Email::where('created_at','like',"%".$date."%")->simplePaginate(5);
 
         $chart = (new LarapexChart)->setType('area')
         ->setTitle('Total Akumulatif Data')
@@ -54,7 +56,7 @@ class BackOffice extends Controller
             ]
         ]);
 
-        return view('back-end.dashboard',compact('iklan','countUser','countAds','userBaru','chart','countBannerIklan'));
+        return view('back-end.dashboard',compact('iklan','countUser','countAds','userBaru','chart','countBannerIklan','emailSend'));
     }
     public function email(){
         return view('back-end.marketing-campaign');

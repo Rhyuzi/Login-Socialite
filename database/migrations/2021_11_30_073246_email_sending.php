@@ -16,7 +16,8 @@ class EmailSending extends Migration
         Schema::create('sending_email', function (Blueprint $table) {
             $table->id();
             $table->string('pengirim');
-            $table->string('email_tujuan')->nullable();
+            $table->string('email_tujuan');
+            $table->string('nama_penerima');
             $table->timestamps();
         });
     }

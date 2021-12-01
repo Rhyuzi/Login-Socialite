@@ -10,6 +10,6 @@ class Email extends Model
     use HasFactory;
     protected $table = 'sending_email';
     protected $fillable = [
-        'pengirim','email_tujuan'
+        'pengirim','email_tujuan','nama_penerima'
     ];
 }
