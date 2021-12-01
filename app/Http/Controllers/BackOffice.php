@@ -41,7 +41,7 @@ class BackOffice extends Controller
         $date = date('Y-m-d');
         $bulan = date('M');
         $userBaru = User::where('created_at','like',"%".$date."%")->where('role', 'user')->get();
-        $emailSend = Email::where('created_at','like',"%".$date."%")->simplePaginate(5);
+        $emailSend = Email::where('created_at','like',"%".$date."%")->paginate(5);
 
         $chart = (new LarapexChart)->setType('area')
         ->setTitle('Total Akumulatif Data')

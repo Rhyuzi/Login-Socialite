@@ -429,7 +429,7 @@
                 @endforeach
               </tbody>
             </table>
-            {{ $emailSend->links() }}
+            {{ $emailSend->links('vendor.pagination.bootstrap-4') }}
           </div>
         </div>
       </div>

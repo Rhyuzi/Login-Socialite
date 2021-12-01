@@ -60,7 +60,7 @@
                     </div>
                     </div>
             @endforeach
-            {{ $listIklan->links() }}
+            {{ $listIklan->links('vendor.pagination.bootstrap-4') }}
               </div>
              </div>
 
@@ -89,7 +89,7 @@
                     </div>
                     </div>
             @endforeach
-            {{ $tidakDitampilkan->links() }}
+            {{ $tidakDitampilkan->links('vendor.pagination.bootstrap-4') }}
               </div>
              </div>
 
