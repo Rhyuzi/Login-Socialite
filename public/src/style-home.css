@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  color: #404040;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.bi {
+  margin-right: 10px;
+  font-size: 22px;
+  vertical-align: middle;
+  color: white;
+}
+
+.carousel-inner img {
+  margin: auto;
+  width: 90vw;
+  height: 50vw;
+}
+
+.carousel-caption {
+  position: relative;
+  left: auto;
+  right: auto;
+  padding: 0 200px 50px;
+}
+
+.carousel-caption p {
+  color: white;
+}
+
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-header .close {
+  position: absolute;
+  right: 50px;
+  margin-right: -75px;
+  margin-top: -25px;
+  background-color: #303030;
+  border: 3px solid white;
+  border-radius: 50px;
+  width: 45px;
+  height: 45px;
+  box-shadow: -1px 1px 5px black;
+}
+
+.modal-header span {
+  color: white;
+  font-size: 26px;
+}
+
+.modal-body img {
+  width: 100%;
+}
+
+.button {
+  display: block;
+  padding: 16px 20px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.google {
+  background-color: #da1519;
+}
+
+.brandLogo {
+  margin: 30px 0 0px 50px;
+}
+
+nav {
+  margin-bottom: 30px;
+}
+
+main {
+  display: flex;
+}
+
+.adsCarousel {
+  flex: 60%;
+  align-self: center;
+}
+.carousel-home {
+  flex: 60%;
+  align-self: center;
+  width: 100%;
+  background-color:brown;
+}
+
+.formBox {
+  flex: 40%;
+  align-self: center;
+}
+
+.form {
+  width: 449px;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  padding: 30px 54px;
+  margin: 0 auto;
+  box-shadow: -5px 5px 20px 0 rgb(46, 46, 46);
+}
+
+#signIn h1 {
+  margin-bottom: 35px;
+}
+
+#signIn p {
+  margin: 30px 0 20px 0;
+}
+
+#signUp h1 {
+  margin-bottom: -15px;
+}
+
+#signUp p {
+  margin: 25px 0 20px 0;
+}
+
+#signUp h1 + p {
+  margin-bottom: 25px;
+}
+
+#regForm {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  margin-bottom: 20px;
+}
+
+.btnReg{
+  background-color: #76111c;
+  color: white;
+  font-weight: 600;
+  margin-top: 30px;
+  width: 341px;
+height: 50px;
+}
+
+input:focus {
+  outline-color: #76111c;
+}
+.form-control {
+  -webkit-transition: none;
+  transition: none;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.form-control:focus {
+  color: #3F4254;
+  background-color: #ffffff;
+  border-color: #884377;
+  outline: 0;
+}
+
+.form-control.form-control-solid {
+  background-color: #F3F6F9;
+  border-color: #F3F6F9;
+  color: #3F4254;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control.form-control-solid:active,
+.form-control.form-control-solid.active,
+.form-control.form-control-solid:focus,
+.form-control.form-control-solid.focus {
+  background-color: #EBEDF3;
+  border-color: #EBEDF3;
+  color: #3F4254;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+#otp{
+  margin-top: 20px;
+}
+.btnOTP{
+  background-color: #76111c;
+  color: white;
+  font-weight: 600;
+  margin-top: 30px;
+  width: 341px;
+height: 50px;
+}
+.btnCancel{
+  font-weight: 600;
+  width: 341px;
+height: 50px;
+}
+.otpIcon{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ti{
+  position: absolute;
+width: 129px;
+height: 129px;
+left: 655px;
+top: 195px;
+z-index: 1;
+}
+.btnSignOut{
+    position: absolute;
+width: 10%;
+height: 35px;
+margin-left: 70%;
+top: 27px;
+}
+.person{
+    position: absolute;
+    margin-left: 82%;
+    top: 26px;
+}
+
+@media screen and (max-width: 767px){
+  nav{
+    width: 100%;
+  }.btnSignOut{
+    margin-left: 50%;
+    width: 30%;
+    height: 3%;
+  }.person{
+    margin-left: 85%;
+  }.carousel-inner img {
+    width: 400px;
+    height: 800px;
+  }
+}
