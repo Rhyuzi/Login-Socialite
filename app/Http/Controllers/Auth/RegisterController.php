@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Iklan;
+use App\Models\BannerIklan;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,15 +74,23 @@ class RegisterController extends Controller
         ]);
     }
     public function registerWithAds(){
+        $bannerIklan = BannerIklan::where('tampilkan',1)->get();
         $ads = Iklan::where('tampilkan', 1)->get();
-        return view('auth.register',compact('ads'));
+        return view('auth.register',compact('ads','bannerIklan'));
     }
     public function registerForm(){
+        $bannerIklan = BannerIklan::where('tampilkan',1)->get();
         $ads = Iklan::where('tampilkan', 1)->get();
-        return view('auth.form-register',compact('ads'));
+        return view('auth.form-register',compact('ads','bannerIklan'));
     }
     public function addNumber(){
+        $bannerIklan = BannerIklan::where('tampilkan',1)->get();
         $ads = Iklan::where('tampilkan', 1)->get();
-        return view('auth.add-number',compact('ads'));
+        return view('auth.add-number',compact('ads','bannerIklan'));
+    }
+    public function otp(){
+        $bannerIklan = BannerIklan::where('tampilkan',1)->get();
+        $ads = Iklan::where('tampilkan', 1)->get();
+        return view('auth.otp-verification',compact('ads','bannerIklan'));
     }
 }

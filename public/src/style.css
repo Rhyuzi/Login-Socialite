@@ -47,7 +47,11 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-
+img.d-block {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+}
 h1 {
   font-size: 30px;
   font-weight: 600;

@@ -18,19 +18,14 @@ Route::get('/', [App\Http\Controllers\Auth\RegisterController::class, 'registerW
 Route::get('/registerForm', function () {
     return view('auth.form-register');
 });
-Route::get('/otp', function () {
-    return view('auth.otp-verification');
-});
 Route::get('/notif', function () {
     return view('auth.notif-success');
-});
-Route::get('/number', function () {
-    return view('auth.add-number');
 });
 
 Auth::routes();
 Route::get('/registerForm', [App\Http\Controllers\Auth\RegisterController::class, 'registerForm'])->name('registerForm');
 Route::get('/number', [App\Http\Controllers\Auth\RegisterController::class, 'addNumber'])->name('add-number');
+Route::get('/otp', [App\Http\Controllers\Auth\RegisterController::class, 'otp'])->name('otp');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

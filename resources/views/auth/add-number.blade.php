@@ -9,33 +9,26 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-indicators">
+           
+           
+            @foreach($bannerIklan as $b)
             <button
               type="button"
               data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
+              data-bs-slide-to="{{ $loop->index }}"
+              class="{{ $loop->first ? 'active' : '' }} "
             ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
+           @endforeach
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            
+            @foreach($bannerIklan as $key => $b)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
               <img
-                src="{{ asset('src/assets/images/house.png') }}"
+                src="{{ asset('/iklan/gambar/'.$b->gambar_iklan) }}"
                 class="d-block"
-                alt="KPR Rumah"
+                width="400px"
+                height="475px"
               />
               <div class="carousel-caption">
                 <p>
@@ -47,38 +40,7 @@
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
-              <img
-                src="{{ asset('src/assets/images/cars.png') }}"
-                class="d-block"
-                alt="Mobil Baru"
-              />
-              <div class="carousel-caption">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nascetur cursus tortor ut rhoncus vitae netus felis. Nunc
-                  dignissim ullamcorper sem consectetur quis. In montes,
-                  ultricies cursus pellentesque mauris eleifend sem. Sit vel
-                  nulla in sapien
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="{{ asset('src/assets/images/shopping.png') }}"
-                class="d-block"
-                alt="Belanja Terus"
-              />
-              <div class="carousel-caption">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nascetur cursus tortor ut rhoncus vitae netus felis. Nunc
-                  dignissim ullamcorper sem consectetur quis. In montes,
-                  ultricies cursus pellentesque mauris eleifend sem. Sit vel
-                  nulla in sapien
-                </p>
-              </div>
-            </div>
+            @endforeach
           </div>
           <button
             class="carousel-control-prev"
