@@ -14,59 +14,30 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-indicators">
+          @foreach($bannerIklan as $b)
             <button
               type="button"
               data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
+              data-bs-slide-to="{{ $loop->index }}"
+              class="{{ $loop->first ? 'active' : '' }} "
             ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
+           @endforeach
+        
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+          @foreach($bannerIklan as $key => $b)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
               <img
-                src="{{ asset('src/assets/images/Rectangle 1506.png') }}"
+                src="{{ asset('/iklan/gambar/'.$b->gambar_iklan) }}"
                 class="d-block"
-                alt="KPR Rumah"
+                width="400px"
+                height="475px"
               />
               <div class="carousel-caption">
-              
               </div>
             </div>
-            <div class="carousel-item">
-              <img
-                src="{{ asset('src/assets/images/iklan2.png') }}"
-                class="d-block"
-                alt="Mobil Baru"
-              />
-              <div class="carousel-caption">
-              
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="{{ asset('src/assets/images/iklan3.png') }}"
-                class="d-block"
-                alt="Belanja Terus"
-              />
-              <div class="carousel-caption">
-              
-			  
-              </div>
-            </div>
+            @endforeach
+           
           </div>
           <button
             class="carousel-control-prev"

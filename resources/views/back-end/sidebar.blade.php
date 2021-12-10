@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/be/img/apple-icon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('/be/img/favicon.png')}}">
+    <link rel="icon" href="{{asset('/icon/cimb-favicon.ico')}}">
+    <img src="{{ asset('/icon/cimb-favicon.icon') }}" alt="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-    Rhyuzi
+    CIMB - Wifi Portal
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -29,25 +30,25 @@
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
-            <li class="nav-item {{ Route::currentRouteName() == 'dashboard-admin' ? 'active' : '' }}">
+            <li class="nav-item {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="material-icons">dashboard</i>
                 <p> Dashboard </p>
               </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'allArticle' ? 'active' : '' }}">
+            <li class="nav-item {{ Route::currentRouteName() == 'list-iklan' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('list-iklan') }}">
                 <i class="material-icons">article</i>
                 <p>Ads Management </p>
-              </a>
+              </a> 
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'allArticle' ? 'active' : '' }}">
+            <li class="nav-item {{ Route::currentRouteName() == 'marketing-campaign' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('marketing-campaign') }}">
                 <i class="material-icons">dashboard</i>
                 <p>Marketing Campaign</p>
               </a>
             </li>
-            <li class="nav-item {{ Route::currentRouteName() == 'show-gambar' ? 'active' : '' }}">
+            <li class="nav-item {{ Route::currentRouteName() == 'user-management' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('user-management') }}">
                 <i class="material-icons">collections</i>
                 <p> User Management  </p>

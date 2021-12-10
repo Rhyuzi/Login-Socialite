@@ -22,6 +22,9 @@
     float: right;
     margin-right: 20px;
 }
+.bannerIklan{
+  object-fit: cover;
+}
     
 </style>
 @if ($message = Session::get('sukses'))
@@ -47,13 +50,15 @@
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                  
-                   </div>
+                   @if($i->nama_video != null )
                    <video width="200" height="100" controls>
                         <source src="{{ asset('/iklan/video/'.$i->nama_video)}}" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                          Your browser does not support the video tag.
                     </video>
+                    @endif
+                   </div>
+                   
                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalEdit2{{ $i->id }}">Edit</button>
                         <a href="{{ route('hapus-iklan',$i->id) }}" class="btn btn-danger">Hapus</a>
                       
@@ -77,12 +82,15 @@
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                   </div>
+                   @if($i->nama_video != null)
                    <video width="200" height="100" controls>
                         <source src="{{ asset('/iklan/video/'.$i->nama_video)}}" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                          Your browser does not support the video tag.
                     </video>
+                  @endif
+                   </div>
+                
                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalEdit{{ $i->id }}">Edit</button>
                         <a href="{{ route('hapus-iklan',$i->id) }}" class="btn btn-danger">Hapus</a>
                       
@@ -102,12 +110,12 @@
                   
                 </div>
                 <div> <button class="tvideo btn btn-primary" data-toggle="modal" data-target="#tambahBanner">Tambah Banner Ads</button></div>
-                @foreach($bannerIklan1 as $i)
+                @foreach($bannerPaginate1 as $i)
                 <div class="card" style="width: 27rem;">
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                   <img src="{{ asset('/iklan/gambar/'.$i->gambar_iklan)}}" width="400" height="200">
+                   <img class="bannerIklan" src="{{ asset('/iklan/gambar/'.$i->gambar_iklan)}}" width="300" height="200">
 
                    </div>
                    
@@ -117,6 +125,7 @@
                     </div>
                     </div>
               @endforeach
+               {{ $bannerPaginate1->links('vendor.pagination.bootstrap-4') }}
               </div>
              </div>
 
@@ -138,7 +147,7 @@
                     <div class="card-body">
                    <div class="videoWrapper">
                    {!! $i->link_iklan !!}
-                   <img src="{{ asset('iklan/gambar/'.$i->gambar_iklan)}}" width="400" height="200">
+                   <img src="{{ asset('iklan/gambar/'.$i->gambar_iklan)}}" width="200" height="200">
 
                    </div>
                    

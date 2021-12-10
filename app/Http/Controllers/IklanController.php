@@ -36,13 +36,14 @@ class IklanController extends Controller
       
     }
     public function listIklan(){
-        $listIklan = Iklan::where('tampilkan', 1)->simplePaginate(3);
-        $tidakDitampilkan = Iklan::where('tampilkan', 0)->simplePaginate(3);
+        $listIklan = Iklan::where('tampilkan', 1)->paginate(3);
+        $tidakDitampilkan = Iklan::where('tampilkan', 0)->paginate(3);
         $iklan = Iklan::where('tampilkan', 0)->get();
         $iklan1 = Iklan::where('tampilkan', 1)->get();
         $bannerIklan1 = BannerIklan::where('tampilkan', 1)->get();
         $bannerIklan0 = BannerIklan::where('tampilkan', 0)->get();
-        return view('back-end.iklan',compact('listIklan','tidakDitampilkan','iklan','iklan1','bannerIklan1','bannerIklan0'));
+        $bannerPaginate1 = BannerIklan::where('tampilkan', 1)->paginate(2);
+        return view('back-end.iklan',compact('listIklan','tidakDitampilkan','iklan','iklan1','bannerIklan1','bannerIklan0','bannerPaginate1'));
     }
     public function hapus($id){
         $hapus = Iklan::find($id);

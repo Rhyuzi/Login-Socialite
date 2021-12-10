@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Iklan;
+use App\Models\BannerIklan;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -24,6 +25,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        return view('home');
+        $ads = Iklan::where('tampilkan',1)->get();
+        $bannerIklan = BannerIklan::where('tampilkan',3)->get();
+        return view('home',compact('ads','bannerIklan'));
     }
 }

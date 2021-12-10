@@ -28,8 +28,31 @@
     />
     <link rel="stylesheet" href="{{ asset('/src/style-home.css')}}" />
     <title>CIMB - Wifi Portal</title>
+    <script>          
+      function doOnOrientationChange()
+      {
+        switch(window.orientation) 
+        {  
+          case -90:                 
+                 document.getElementById("landscape").style.display="block";
+                 break;
+          case 90:              
+                document.getElementById("landscape").style.display="block";                 
+                break;
+         default:                   
+                document.getElementById("landscape").style.display="none";
+                break;                            
+        }
+      }
+
+      //Listen to orientation change
+      window.addEventListener('orientationchange', doOnOrientationChange);  
+
+    </script>
   </head>
-  <body>
+  
+  <body onload="doOnOrientationChange();">
+  <div id="landscape"><div>"Rotate Device to Portrait"</div></div>
     <header>
       <nav>
         <div class="brandLogo">
